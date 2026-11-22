@@ -153,7 +153,7 @@ function startCartes(chapId) {
   COURSE.forEach(c => {
     if (chapId && c.id !== chapId) return;
     c.sections.forEach(s => {
-      cartesListe.push({ chap: c.titre, recto: s.titre, verso: s.html });
+      cartesListe.push({ chap: c.titre, recto: s.titre, verso: s.html + (s.schema && SCHEMAS[s.schema] ? SCHEMAS[s.schema] : "") });
     });
   });
   carteIndex = 0; carteRetournee = false;
@@ -215,6 +215,15 @@ function startDefi() {
   show("quiz");
   renderQuestion();
 }
+function startSchemas() {
+  // Session composée uniquement d'exercices de schémas, dans un ordre mélangé
+  quizMode = "schemas";
+  const pool = QUESTIONS.filter(q => q.type === "schema");
+  quizListe = ordreMelange(pool.length).map(i => pool[i]);
+  quizIndex = 0; quizScore = 0;
+  show("quiz");
+  renderQuestion();
+}
 
 function renderQuestion() {
   const cont = document.getElementById("quiz-contenu");
@@ -247,6 +256,20 @@ function renderQuestion() {
   } else if (q.type === "libre") {
     html += "<input id='rep-libre' class='champ' type='text' autocomplete='off' placeholder='Ta réponse…'>" +
       "<button class='btn' onclick='validerLibre()'>Valider</button>";
+  } else if (q.type === "schema") {
+    // Exercice de schéma : retrouver le nom de chaque pastille numérotée
+    const def = SCHEMA_DEFS[q.schema];
+    const pins = Object.keys(def.labels);
+    const banque = ordreMelange(q.banque.length).map(i => q.banque[i]);
+    html += "<div class='schema-ex'>" + def.svg("exercice") + "</div>";
+    pins.forEach(p => {
+      html += "<div class='pinrow'><span class='pinnum'>" + p + "</span>" +
+        "<select id='pin-" + p + "' class='champ pinselect'>" +
+        "<option value=''>Choisir le nom…</option>" +
+        banque.map(n => "<option value=\"" + n + "\">" + n + "</option>").join("") +
+        "</select></div>";
+    });
+    html += "<button class='btn' onclick='validerSchema()'>Valider</button>";
   }
   html += "<div id='feedback'></div>";
   cont.innerHTML = html;
@@ -330,6 +353,25 @@ function validerLibre() {
   appliquerResultat(q, juste);
   if (juste) quizScore++;
   feedback(q, juste, juste ? "" : "Réponse attendue : " + q.reponses.map(g => g[0]).join(" et "));
+}
+
+function validerSchema() {
+  if (quizRepDonnee) return;
+  const q = quizListe[quizIndex];
+  const def = SCHEMA_DEFS[q.schema];
+  const pins = Object.keys(def.labels);
+  let toutesBonnes = true;
+  pins.forEach(p => {
+    const sel = document.getElementById("pin-" + p);
+    const val = sel ? sel.value : "";
+    const ok = val === def.labels[p];
+    if (!ok) toutesBonnes = false;
+    if (sel) { sel.disabled = true; sel.classList.add(ok ? "selbon" : "selko"); }
+  });
+  appliquerResultat(q, toutesBonnes);
+  if (toutesBonnes) quizScore++;
+  const correction = "Correction : " + pins.map(p => p + " → " + def.labels[p]).join(" · ");
+  feedback(q, toutesBonnes, toutesBonnes ? "" : correction);
 }
 
 function questionSuivante() { quizIndex++; renderQuestion(); }
