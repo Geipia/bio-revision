@@ -8,7 +8,8 @@ const COURSE = [
     sections: [
       {
         titre: "Les 3 parties de la cellule",
-        html: "<p>Toute cellule est formée de :</p><ul><li><b>Membrane</b> (cellulaire / cytoplasmique / plasmique)</li><li><b>Cytoplasme</b> = cytosol</li><li><b>Noyau</b></li></ul>"
+        html: "<p>Toute cellule est formée de :</p><ul><li><b>Membrane</b> (cellulaire / cytoplasmique / plasmique)</li><li><b>Cytoplasme</b> = cytosol</li><li><b>Noyau</b></li></ul>",
+        schema: "cellule"
       }
     ]
   },
@@ -70,7 +71,8 @@ const COURSE = [
       },
       {
         titre: "Le cycle énergétique ADP / ATP",
-        html: "<div class='eq'>ADP + P + E ⇄ ATP</div><p>ADP = adénosine <b>di</b>phosphate. Pour utiliser l'énergie, on utilise de l'<b>eau</b> pour détacher un P et passer de ATP à <b>ADP + P + E</b>.</p><p>On qualifie la mitochondrie de <b>« centrale énergétique de la cellule »</b> : elle produit l'ATP nécessaire aux réactions cellulaires. C'est dans cette molécule que l'énergie du phénomène respiratoire est <b>stockée et transportée</b>.</p>"
+        html: "<div class='eq'>ADP + P + E ⇄ ATP</div><p>ADP = adénosine <b>di</b>phosphate. Pour utiliser l'énergie, on utilise de l'<b>eau</b> pour détacher un P et passer de ATP à <b>ADP + P + E</b>.</p><p>On qualifie la mitochondrie de <b>« centrale énergétique de la cellule »</b> : elle produit l'ATP nécessaire aux réactions cellulaires. C'est dans cette molécule que l'énergie du phénomène respiratoire est <b>stockée et transportée</b>.</p>",
+        schema: "adpatp"
       },
       {
         titre: "Rôles des mitochondries",
@@ -84,7 +86,8 @@ const COURSE = [
     sections: [
       {
         titre: "Structure",
-        html: "<p>Ensemble de <b>feuillets très minces</b> formant de nombreux replis dans le cytoplasme. Ces feuillets sont en liaison avec la <b>membrane plasmique</b> et celle du <b>noyau</b>.</p><p>L'espace entre deux feuillets s'appelle une <b>citerne</b>. Les citernes forment un vaste <b>réseau de circulation</b>.</p>"
+        html: "<p>Ensemble de <b>feuillets très minces</b> formant de nombreux replis dans le cytoplasme. Ces feuillets sont en liaison avec la <b>membrane plasmique</b> et celle du <b>noyau</b>.</p><p>L'espace entre deux feuillets s'appelle une <b>citerne</b>. Les citernes forment un vaste <b>réseau de circulation</b>.</p>",
+        schema: "reticulum"
       },
       {
         titre: "RE rugueux et RE lisse",
@@ -306,5 +309,35 @@ const QUESTIONS = [
     bonnes: [0], expl: "Sacs aplatis empilés + bourgeonnement en vésicules = dictyosomes de l'appareil de Golgi." },
   { id: "q50", chap: "revision", diff: 3, type: "qcm", q: "Un corpuscule allongé, cylindrique, arrondi aux extrémités, avec des crêtes internes. C'est…",
     choix: ["une mitochondrie", "un chloroplaste", "le RE rugueux", "un dictyosome"],
-    bonnes: [0], expl: "C'est la structure de la mitochondrie, siège de la respiration cellulaire." }
+    bonnes: [0], expl: "C'est la structure de la mitochondrie, siège de la respiration cellulaire." },
+  // --- Exercices de schémas : retrouver les noms sur les schémas ---
+  // (les bonnes réponses par pastille sont dans SCHEMA_DEFS[schema].labels)
+  { id: "s01", chap: "intro", diff: 1, type: "schema", schema: "cellule",
+    q: "Retrouve les 3 parties de la cellule sur le schéma.",
+    banque: ["Membrane", "Cytoplasme", "Noyau", "Vacuole", "Chloroplaste"],
+    expl: "Toute cellule est formée d'une membrane, du cytoplasme (= cytosol) et du noyau." },
+  { id: "s02", chap: "membrane", diff: 2, type: "schema", schema: "membrane",
+    q: "Légende le schéma de la membrane cytoplasmique (mosaïque fluide).",
+    banque: ["Tête hydrophile", "Queue hydrophobe", "Protéine membranaire", "Ribosome", "Citerne"],
+    expl: "Bicouche de phospholipides : têtes hydrophiles vers l'extérieur et l'intérieur, queues hydrophobes au centre, le tout traversé par des protéines membranaires." },
+  { id: "s03", chap: "mitochondries", diff: 2, type: "schema", schema: "mitochondrie",
+    q: "Légende le schéma de la mitochondrie et de la respiration cellulaire.",
+    banque: ["Enveloppe", "Crêtes internes", "Entrées (C6H12O6 + O2)", "Sorties (CO2 + H2O + E)", "Ribosomes"],
+    expl: "La mitochondrie possède des crêtes internes ; la respiration cellulaire y transforme C6H12O6 + O2 en CO₂ + H₂O + énergie." },
+  { id: "s04", chap: "reticulum", diff: 2, type: "schema", schema: "reticulum",
+    q: "Légende le schéma du réticulum endoplasmique.",
+    banque: ["Ribosome", "Citerne", "RE rugueux", "RE lisse", "Dictyosome"],
+    expl: "Le RE rugueux porte des ribosomes (synthèse des protéines), le RE lisse n'en porte pas (synthèse des lipides). L'espace entre deux feuillets est une citerne." },
+  { id: "s05", chap: "golgi", diff: 2, type: "schema", schema: "golgi",
+    q: "Légende le schéma de l'appareil de Golgi.",
+    banque: ["Dictyosome (sacs aplatis empilés)", "Vésicule (bourgeonnement)", "Crête interne", "Citerne"],
+    expl: "Un dictyosome est un empilement de petits sacs très aplatis ; ses bords se gonflent et se fragmentent en vésicules (bourgeonnement)." },
+  { id: "s06", chap: "vegetale", diff: 3, type: "schema", schema: "vegetale",
+    q: "Légende le schéma de la cellule végétale.",
+    banque: ["Enveloppe", "Membrane", "Chloroplaste", "Vacuole", "Noyau", "Lysosome", "Mitochondrie"],
+    expl: "La cellule végétale possède tous les organites de la cellule animale, plus une enveloppe rigide, des chloroplastes et des vacuoles." },
+  { id: "s07", chap: "mitochondries", diff: 3, type: "schema", schema: "adpatp",
+    q: "Légende le cycle énergétique ADP / ATP.",
+    banque: ["ADP", "ATP", "P + E (stockage)", "P + E (libérés)", "Glucose", "O₂"],
+    expl: "ADP + P + E ⇄ ATP : l'énergie est stockée dans l'ATP, puis libérée quand l'ATP redevient ADP + P + E." }
 ];
