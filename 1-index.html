@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bio Révision — La cellule</title>
+<meta name="description" content="Révision du chapitre de biologie sur la cellule : cours, flashcards, exercices adaptatifs et suivi de progression.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bio Révision">
+<meta name="theme-color" content="#175c38">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" href="7-icon-180.png">
+<style>
+:root{
+  --fond:#eef4ee; --carte:#ffffff; --texte:#16281d; --muted:#5f7166;
+  --accent:#2e9e63; --accent-fonce:#1d7a47; --accent-tres-fonce:#175c38;
+  --vert:#2e9e63; --vert-fond:#e4f5ea; --vert-bord:#bfe6cd;
+  --rouge:#d84545; --rouge-fond:#fdecec; --rouge-bord:#f3c8c8;
+  --bord:#dce8dd;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  margin:0;color:var(--texte);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.55;
+  background:var(--fond);
+  background-image:radial-gradient(circle at 15% 0%, rgba(46,158,99,.10), transparent 55%),
+                   radial-gradient(circle at 90% 10%, rgba(46,158,99,.07), transparent 45%);
+  background-attachment:fixed;
+  padding-bottom:calc(84px + env(safe-area-inset-bottom));
+}
+.entete{
+  padding:calc(22px + env(safe-area-inset-top)) 20px 22px;text-align:center;
+  background:linear-gradient(150deg,var(--accent-tres-fonce),var(--accent-fonce) 55%,var(--accent));
+  color:#fff;border-radius:0 0 26px 26px;
+  box-shadow:0 6px 18px rgba(23,92,56,.25);
+}
+.entete h1{margin:0;font-size:25px;letter-spacing:.3px;font-weight:800}
+.entete p{margin:5px 0 0;color:rgba(255,255,255,.82);font-size:14px}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.ecran{display:none;animation:apparaitre .22s ease-out}
+.ecran.actif{display:block}
+@keyframes apparaitre{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.carte{
+  display:block;width:100%;background:var(--carte);border:1px solid var(--bord);
+  border-radius:18px;padding:18px;margin:12px 0;text-align:left;
+  font:inherit;color:inherit;box-shadow:0 3px 12px rgba(23,92,56,.07);
+}
+button.carte{cursor:pointer;transition:transform .12s,box-shadow .12s}
+button.carte:active{transform:scale(.985);box-shadow:0 1px 5px rgba(23,92,56,.10)}
+.carte.centre{text-align:center}
+.bigpct{
+  font-size:46px;font-weight:800;
+  background:linear-gradient(120deg,var(--accent-fonce),var(--accent));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.muted{color:var(--muted);font-size:14px}
+.centre{text-align:center}
+.barre{height:8px;background:#dde9de;border-radius:99px;overflow:hidden;margin-top:8px}
+.barre.big{height:12px;margin:10px 0}
+.rempl{height:100%;background:linear-gradient(90deg,var(--accent-fonce),var(--accent));border-radius:99px;transition:width .4s}
+.btn{
+  display:block;width:100%;margin:12px 0;padding:15px;border:0;border-radius:14px;
+  background:linear-gradient(160deg,var(--accent),var(--accent-fonce));
+  color:#fff;font:inherit;font-weight:700;cursor:pointer;
+  box-shadow:0 3px 0 var(--accent-tres-fonce),0 6px 14px rgba(23,92,56,.22);
+  transition:transform .1s;
+}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--accent-tres-fonce)}
+.btn.sec{background:#fff;color:var(--texte);border:1px solid var(--bord);box-shadow:0 2px 0 var(--bord)}
+.btn.danger{background:#fff;color:var(--rouge);border:1px solid var(--rouge-bord);box-shadow:0 2px 0 var(--rouge-bord);font-weight:600}
+.rowbtn{display:flex;gap:10px}
+.rowbtn .btn{margin:12px 0}
+.chaprow{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.chaptitre{font-weight:700}
+.chappct{color:var(--accent-fonce);font-weight:700;white-space:nowrap}
+.chapfoot{margin-top:18px}
+.sec{
+  margin:14px 0;padding:16px;background:#fff;border:1px solid var(--bord);
+  border-radius:18px;box-shadow:0 2px 10px rgba(23,92,56,.05);
+}
+.sec h3{
+  margin-top:0;color:var(--accent-tres-fonce);
+  padding-left:11px;border-left:4px solid var(--accent);line-height:1.25;
+}
+.eq{
+  background:var(--vert-fond);border:1px solid var(--vert-bord);border-radius:12px;
+  padding:12px;text-align:center;font-weight:700;font-size:18px;margin:10px 0;
+  color:var(--accent-tres-fonce);
+}
+.aret{background:#eef7e4;border:1px solid #cfe6c6;border-radius:12px;padding:10px}
+table{width:100%;border-collapse:collapse;margin:8px 0}
+th,td{border:1px solid var(--bord);padding:8px;text-align:left}
+th{background:var(--vert-fond)}
+.schema{margin:12px 0}
+.schema svg{width:100%;height:auto;border:1px solid var(--bord);border-radius:12px;background:#fff}
+.schema figcaption{text-align:center;color:var(--muted);font-size:13px;margin-top:4px}
+.qtext{font-size:21px;line-height:1.4;font-weight:800}
+.choix{display:flex;flex-direction:column;gap:10px;margin:14px 0;counter-reset:ch}
+.choixbtn{
+  counter-increment:ch;display:flex;align-items:center;gap:12px;
+  padding:14px 15px;border-radius:14px;border:1.5px solid var(--bord);background:#fff;
+  font:inherit;text-align:left;cursor:pointer;color:var(--texte);
+  box-shadow:0 1px 4px rgba(23,92,56,.05);
+}
+.choixbtn::before{
+  content:counter(ch,upper-alpha);
+  flex:0 0 auto;width:28px;height:28px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--fond);color:var(--muted);font-weight:800;font-size:14px;
+  border:1px solid var(--bord);
+}
+.choixbtn:active{background:#f4faf5}
+.choixbtn.sel{border-color:var(--accent);background:var(--vert-fond);font-weight:600}
+.choixbtn.sel::before{background:var(--accent);color:#fff;border-color:var(--accent)}
+.choixbtn.bon{border-color:var(--vert);background:var(--vert-fond);font-weight:700}
+.choixbtn.bon::before{background:var(--vert);color:#fff;border-color:var(--vert)}
+.choixbtn.bon::after{content:"✓";margin-left:auto;color:var(--vert);font-weight:800}
+.choixbtn.mauvais{border-color:var(--rouge);background:var(--rouge-fond)}
+.choixbtn.mauvais::before{background:var(--rouge);color:#fff;border-color:var(--rouge)}
+.choixbtn.mauvais::after{content:"✕";margin-left:auto;color:var(--rouge);font-weight:800}
+.choixbtn:disabled{cursor:default;opacity:.92}
+.champ{
+  width:100%;padding:15px;border-radius:14px;border:1.5px solid var(--bord);
+  font:inherit;margin:10px 0;background:#fff;
+}
+.champ:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(46,158,99,.15)}
+.fb{border-radius:14px;padding:14px;margin:14px 0;animation:apparaitre .22s ease-out}
+.fb.ok{background:var(--vert-fond);border:1px solid var(--vert-bord)}
+.fb.ko{background:var(--rouge-fond);border:1px solid var(--rouge-bord)}
+.fb-titre{font-weight:800;margin:0 0 6px}
+.fb.ok .fb-titre{color:var(--accent-fonce)}
+.fb.ko .fb-titre{color:var(--rouge)}
+.badge{font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px}
+.badge.hard{background:#fde2dd;color:#c2402f}
+.badge.mid{background:#fff3d6;color:#a87b1f}
+.flashcard{
+  display:block;width:100%;min-height:280px;background:#fff;border:1px solid var(--bord);
+  border-radius:22px;padding:22px;font:inherit;color:inherit;cursor:pointer;
+  box-shadow:0 5px 16px rgba(23,92,56,.10);margin:12px 0;text-align:center;
+  transition:transform .12s;
+}
+.flashcard:active{transform:scale(.985)}
+.fc-recto{
+  font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  min-height:200px;color:var(--accent-tres-fonce);
+}
+.fc-verso{text-align:left;font-size:16px}
+.fc-hint{color:var(--muted);font-size:13px;text-align:center}
+.faibles li{margin:6px 0}
+.titre-liste{margin:22px 0 4px;color:var(--accent-tres-fonce)}
+.installbox{
+  background:linear-gradient(160deg,#f2faf4,#e8f5ec);
+  border:1px solid var(--vert-bord);border-radius:18px;padding:14px 16px;margin:12px 0;font-size:15px;
+}
+.installbox ol{margin:8px 0 0;padding-left:22px}
+.navbar{
+  position:fixed;left:0;right:0;bottom:0;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--bord);display:flex;
+  padding-bottom:env(safe-area-inset-bottom);
+  box-shadow:0 -2px 12px rgba(23,92,56,.06);
+}
+.tabbtn{
+  flex:1;border:0;background:none;padding:10px 4px 9px;font:inherit;font-size:12px;
+  color:var(--muted);cursor:pointer;
+}
+.tabbtn .ico{display:block;font-size:20px;margin-bottom:2px;filter:grayscale(60%);opacity:.75}
+.tabbtn.actif{color:var(--accent-fonce);font-weight:700}
+.tabbtn.actif .ico{filter:none;opacity:1}
+#btn-install{display:none}
+</style>
+</head>
+<body>
+<div class="entete">
+  <h1>Bio Révision</h1>
+  <p>Chapitre 2 — La cellule</p>
+</div>
+
+<div class="wrap">
+
+  <div id="ecran-accueil" class="ecran actif">
+    <div class="carte centre" id="accueil-stats"></div>
+    <button class="btn" onclick="startQuiz()">S'entraîner (session adaptée à moi)</button>
+    <button class="btn sec" onclick="startDefi()">Mode Défi — questions complexes</button>
+    <button class="btn sec" onclick="renderCours();show('cours')">Étudier le cours</button>
+    <button class="btn sec" onclick="startCartes()">Réviser avec les flashcards</button>
+    <div class="installbox">
+      <b>Pour l'avoir comme une vraie appli sur ton iPhone :</b>
+      <ol>
+        <li>Ouvre cette page dans <b>Safari</b></li>
+        <li>Touche le bouton <b>Partager</b> (le carré avec la flèche)</li>
+        <li>Choisis <b>« Sur l'écran d'accueil »</b></li>
+      </ol>
+      <p class="muted">Elle s'ouvrira alors en plein écran, comme une appli, et marchera même sans internet. Ta progression reste enregistrée sur ton téléphone.</p>
+    </div>
+    <button id="btn-install" class="btn" onclick="installer()">Installer l'application</button>
+  </div>
+
+  <div id="ecran-cours" class="ecran">
+    <h2>Le cours</h2>
+    <div id="cours-liste"></div>
+  </div>
+
+  <div id="ecran-chapitre" class="ecran">
+    <button class="btn sec" onclick="renderCours();show('cours')">← Tous les chapitres</button>
+    <div id="chapitre-contenu"></div>
+  </div>
+
+  <div id="ecran-cartes" class="ecran">
+    <h2>Flashcards</h2>
+    <div id="cartes-contenu"></div>
+  </div>
+
+  <div id="ecran-quiz" class="ecran">
+    <div id="quiz-contenu"></div>
+  </div>
+
+  <div id="ecran-defi" class="ecran"></div>
+
+  <div id="ecran-progres" class="ecran">
+    <h2>Ma progression</h2>
+    <div id="progres-contenu"></div>
+  </div>
+
+</div>
+
+<nav class="navbar">
+  <button class="tabbtn actif" data-ecran="accueil"><span class="ico">🏠</span>Accueil</button>
+  <button class="tabbtn" data-ecran="cours"><span class="ico">📖</span>Cours</button>
+  <button class="tabbtn" data-ecran="cartes"><span class="ico">🃏</span>Cartes</button>
+  <button class="tabbtn" data-ecran="progres"><span class="ico">📈</span>Progrès</button>
+</nav>
+
+<script src="data.js"></script>
+<script src="schemas.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
