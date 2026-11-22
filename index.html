@@ -152,6 +152,17 @@ th{background:var(--vert-fond)}
 .fc-verso{text-align:left;font-size:16px}
 .fc-hint{color:var(--muted);font-size:13px;text-align:center}
 .faibles li{margin:6px 0}
+.schema-ex{margin:14px 0}
+.schema-ex svg{width:100%;height:auto;border:1px solid var(--bord);border-radius:12px;background:#fff}
+.pinrow{display:flex;align-items:center;gap:10px;margin:8px 0}
+.pinnum{
+  flex:0 0 auto;width:26px;height:26px;border-radius:50%;
+  background:var(--accent-tres-fonce);color:#fff;font-weight:800;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.pinselect{flex:1;margin:0}
+.pinselect.selbon{border-color:var(--vert);background:var(--vert-fond);font-weight:600}
+.pinselect.selko{border-color:var(--rouge);background:var(--rouge-fond)}
 .titre-liste{margin:22px 0 4px;color:var(--accent-tres-fonce)}
 .installbox{
   background:linear-gradient(160deg,#f2faf4,#e8f5ec);
@@ -189,6 +200,7 @@ th{background:var(--vert-fond)}
     <button class="btn sec" onclick="startDefi()">Mode Défi — questions complexes</button>
     <button class="btn sec" onclick="renderCours();show('cours')">Étudier le cours</button>
     <button class="btn sec" onclick="startCartes()">Réviser avec les flashcards</button>
+    <button class="btn sec" onclick="startSchemas()">Exercices de schémas — retrouve les noms</button>
     <div class="installbox">
       <b>Pour l'avoir comme une vraie appli sur ton iPhone :</b>
       <ol>
