@@ -188,7 +188,7 @@ const QUESTIONS = [
     bonnes: [0, 1, 2], expl: "Mitochondries, centrosomes, lysosomes, ribosomes, RE et appareil de Golgi. Le noyau est exclu du cytoplasme." },
   // --- Hyaloplasme ---
   { id: "q12", chap: "hyaloplasme", diff: 1, type: "multi", q: "Quelles sont les caractéristiques de l'hyaloplasme ? (3 bonnes réponses)",
-    choix: ["Transparent", "Viscqueux", "Élastique", "Coloré"],
+    choix: ["Transparent", "Visqueux", "Élastique", "Coloré"],
     bonnes: [0, 1, 2], expl: "L'hyaloplasme est transparent, fluide, incolore, élastique et visqueux." },
   { id: "q13", chap: "hyaloplasme", diff: 2, type: "multi", q: "Que trouve-t-on dissous dans l'eau de l'hyaloplasme ? (3 bonnes réponses)",
     choix: ["Glucides", "Sels minéraux", "Acides aminés", "Chlorophylle"],
