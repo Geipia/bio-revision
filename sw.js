@@ -1,4 +1,4 @@
-const CACHE = "bio-cellule-v3";
+const CACHE = "bio-cellule-v4";
 const FICHIERS = ["./", "./index.html", "./data.js", "./schemas.js", "./app.js", "./manifest.json", "./7-icon-180.png", "./8-icon-512.png", "./apple-touch-icon.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FICHIERS)).then(() => self.skipWaiting()));
